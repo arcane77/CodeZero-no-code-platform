@@ -1,4 +1,4 @@
-<img width="1470" alt="Screenshot 2024-06-27 at 11 40 37 AM" src="https://github.com/arcane77/CodeZero-no-code-platform/assets/96630482/f4887548-3d0a-40b5-acec-4da60cbb39ef"># CodeZero 
+# CodeZero 
 
 CodeZero is a powerful platform that democratizes web development, allowing both developers and non-technical individuals to effortlessly create sophisticated websites.
 
