@@ -36,7 +36,7 @@ Visit `http://localhost:3000` in your browser to view the application.
 
 landing page
 <img width="1470" alt="Screenshot 2024-06-27 at 11 36 13 AM" src="https://github.com/arcane77/CodeZero-no-code-platform/assets/96630482/da7271a3-e835-461e-9902-95768c7447f9">
-### ---
+###---
 templates
 <img width="1470" alt="Screenshot 2024-06-27 at 11 36 21 AM" src="https://github.com/arcane77/CodeZero-no-code-platform/assets/96630482/f6142044-1308-4c10-bce0-497e7c9280b3">
 ---
