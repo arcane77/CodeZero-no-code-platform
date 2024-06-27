@@ -1,0 +1,312 @@
+<%  %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %></title>
+    <meta name="description" content="<%- desc %>">
+    <meta name="keywords" content="<%- keywords %>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-x: hidden;
+            
+        }
+        /* header {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        } */
+
+        main {
+            flex: 1;
+            display: flex;
+            padding: 0;
+            height: 100%;
+        }
+
+        #upload-image{
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center; 
+            align-items: center;    
+            background-size: cover;  
+            background-position: center;
+            cursor: pointer;
+}
+
+.editable {
+    border: none;
+    outline: none;
+    width: 95%;
+}
+
+.editable:hover {
+    background-color: #f9f9f9;
+    cursor: text;
+}
+
+.post-title {
+    text-align: left;
+    font-size: 36px;
+    font-weight: bolder;
+    font-weight: 900;
+    background: #BCD6FB;
+    /* z-index: 10; */
+    margin-left: 4rem;
+    margin-top: 6rem;
+    /* text-shadow: 
+-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
+-1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black; */
+}
+
+.center{
+    margin-left: 1rem;
+    
+}
+
+.post-content {
+    margin-top: 2rem;
+    margin-left: 4rem;
+    font-size: 24px;
+    line-height: 1.6;
+    max-width: 50vw;
+    text-align: left;
+    white-space: pre-wrap; 
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.image-container {
+    width: 100%;
+    height: 46vh;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.image-container img {
+    display: block;
+    width: 100%; 
+    height: fit-content; 
+    
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%; 
+    z-index: 1;
+    
+}
+        .left-section, .right-section {
+            flex: 1;
+            padding: 0px;
+        }
+
+        .left-section {
+        overflow-y: hidden;
+}
+
+    .right-section {
+        flex: 1.4;
+        top: 0;
+        background-color: #BCD6FB;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+
+    .sticky {
+    position: sticky; 
+    z-index: 1;
+    background: #BCD6FB; 
+}
+
+.scrollable-content {
+    overflow-y: auto;
+    
+    overflow-x: hidden;
+}
+
+.name {
+    word-spacing: 5px;
+    color: #0a0a0a;
+    text-align: left;
+    margin-top: 3rem;
+    margin-left: 4rem;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pronoun {
+    margin-left: 4rem;
+    line-height: 13px;
+    font-size: 20px;
+    color: #0a0a0a;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.prof {
+    text-align: left;
+    margin-left: 4rem;
+    font-size: 26px;
+    letter-spacing: 1.5px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 8rem;
+}
+
+span {
+    margin-top: 7rem;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    font-size: 50px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.line {
+    margin-left: 4rem;
+    width: 85%; 
+    height: 0.7px; 
+    background-color: black;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: left;
+    gap: 5rem;
+    margin-top: 4rem;
+    margin-left: 4.2rem;
+}
+
+.custom-button {
+    background-color: transparent;
+    border: 1.5px solid black;
+    padding: 15px 55px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.custom-button:hover {
+    transform: translateY(-7px);
+}
+
+
+
+#download {
+  position: absolute;
+  left: 92%;
+  top: 5%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.logo
+        {
+            width: 190px;
+            height: 90px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="left-section">
+            <div id="upload-image">
+                <!-- image logic -->
+                 <div class="image-container">
+                            <img src="data:<%= images[0].mimetype %>;base64,<%= images[0].buffer.toString('base64') %>" alt="<%= images[0].originalname %>">
+                         </div>   
+                </div>
+
+            <div class="name">
+                <h1><%= name %></h1>
+            </div>
+
+            <div class="pronoun">
+                <h1>(<%= pronounce %>)</h1>
+            </div>
+
+            <div class="prof">
+                <p><%= profession %><p>
+            </div>
+
+        </div>
+        <div class="right-section">
+            <div class="logo">
+                <!-- logo image -->
+                 <img src="data:<%= images[1].mimetype %>;base64,<%= images[1].buffer.toString('base64') %>" alt="<%= images[1].originalname %>" >
+            </div>
+            <img id="download" src="images/download.png" onclick="downloadPage()"/>
+
+            <div class="sticky">
+                <h1 class="post-title" id="title"  onclick="stopPropagation(event)"><span>About Me</span></h1>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="scrollable-content">
+                <p class="post-content editable center" id="content" contenteditable="true"><%- content %></p>
+            </div>
+
+            <div class="buttons">
+                <a href="<%= resume %>"><button class="custom-button">Resume</button></a>
+                <a href="<%= email %>"><button class="custom-button">Contact</button></a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function stopPropagation(e) {
+        e.stopPropagation();
+        }
+
+
+        function downloadPage() {
+        document.getElementById('download').style.display = 'none';
+
+
+        const entirePage = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+
+        //convert the HTML string to a Blob
+        const blob = new Blob([entirePage], { type: 'text/html' });
+
+        //create a URL for the Blob
+        const url = URL.createObjectURL(blob);
+
+        //temporary anchor element and trigger a download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'portfolio.html';
+        a.click();
+
+        // cleanup: revoke the blob URL
+        URL.revokeObjectURL(url);
+        }
+        
+    </script>
+  </body>
+</html>
+

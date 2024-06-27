@@ -1,0 +1,298 @@
+<%  %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brochure2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-x: hidden;
+            
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            padding: 0;
+            height: 100%;
+        }
+
+        .left-section {
+        flex: 1;
+        display: flex;
+        overflow-y: auto;
+        padding: 0;
+        background-color: #fbfbff;
+        border: solid 0.5px #c2c2c2;
+        flex-direction: column;
+        }
+
+        .mid {
+        flex: 1;
+        display: flex;
+        overflow-y: auto;
+        padding: 0;
+        background-color: #fbfbff;
+        border: solid 0.5px #c2c2c2;
+        flex-direction: column;
+        }
+
+    .right-section {
+        flex: 1;
+        padding: 0;
+        top: 0;
+        background-color: #fbfbff;
+        border: solid 0.5px #c2c2c2;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+
+    .top {
+        height: 30vh;
+        border-bottom: #c2c2c2 solid 1px;
+    }
+
+    .top-mid {
+        height: 30vh;
+        border-bottom: #c2c2c2 solid 1px;
+        background-color: #CE7041;
+    }
+
+    #p {
+        font-size: 42px;
+        position: absolute; 
+        left: 4%; width: 12vw;
+        line-height: 30px;
+        letter-spacing: 2px;
+        word-spacing: 2px;
+        line-height: 55px;
+    }
+
+    #p1 {
+        color: azure;
+        font-size: 42px;
+        position: absolute;
+        left: 38%; width: 12vw;
+        line-height: 30px;
+        letter-spacing: 2px;
+        word-spacing: 2px;
+        line-height: 55px;
+    }
+
+    .bold {
+        display: block;
+        font-size: 50px;
+        font-weight: 900;
+    }
+
+    .dark{
+        font-size: 55px;
+        font-weight: 900;
+        display: block;
+    }
+
+    .container {
+    width: 100%;
+    /* height: 100vh; */
+    background-color: #fff;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+
+#upload-image{
+    height: 30vh;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center; 
+    align-items: center;    
+    background-size: cover;  
+    background-position: center;
+    cursor: pointer;
+}
+
+#upload-image-round{
+    margin: 30px 0 0 40px;
+    height: 15vh;
+    width: 130px;
+    border-radius: 50%;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center; 
+    align-items: center;    
+    background-size: cover;  
+    background-position: center;
+    cursor: pointer;
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 2;
+}
+
+.image-container-round {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container-round img {
+    display: block;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+}
+
+.logo
+        {
+            margin-left: 0.5rem;
+            display: flex;
+        }
+
+.org {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 36%;
+    left: 13%;
+    line-height: 0.1%;
+    
+}
+
+.rest{
+    background-color: rgba(15, 81, 81, 0.83);
+    height: 100%;
+}
+
+.text{
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 2rem;
+    font-size: 50px;
+    font-weight: 100;
+    max-width: 200px;
+    color: #fff;
+    word-spacing: 2px;
+    
+}
+
+#service {
+    color: #ffffff;
+    background: transparent;
+    padding: 0 20px;
+    text-align: left;
+    max-width: 700px;
+    position: absolute;
+    top: 64%;
+  }
+
+  #about {
+    color: #131212;
+    background: transparent;
+    padding: 0 20px;
+    text-align: left;
+    max-width: 600px;
+  }
+
+  #services {
+    color: #131212;
+    background: transparent;
+    padding: 0 20px;
+    text-align: left;
+    max-width: 600px;
+  }
+
+
+  .preformatted {
+    white-space: pre-wrap; 
+}
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="left-section">
+            <div class="top">
+                <p id="p">About<span class="bold">Our Company</span></p>
+            </div>
+            
+                <!--image logic-->
+                        <div class="image-container-round">
+                          <img id="upload-image-round"  src="data:<%= images[1].mimetype %>;base64,<%= images[1].buffer.toString('base64') %>" alt="<%= images[1].originalname %>">
+                        </div>
+                    <div class="org">
+                        <h2 name="name" id="name"><%= title %> </h2>
+                        <h2  name="ref" id="ref"><%= refer %> </h2>
+                    </div>
+                    <div class="preformatted" id="about">
+                        <p><%= company %></p>
+                    </div>
+
+        </div>
+
+        <div class="mid">
+            <div class="top-mid">
+                <p id="p1"><span class="bold">Our</span>Services</p>
+            </div>
+            <div class="preformatted" id="about">
+                <p><%= services %></p>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="top">
+                <div class="container">
+                    <div id="upload-image">
+                        <!--image logic-->
+                        
+                                <div class="image-container">
+                                    <img class="logo" id="upload-image" src="data:<%= images[0].mimetype %>;base64,<%= images[0].buffer.toString('base64') %>" alt="<%= images[0].originalname %>" >
+                                </div>
+                                
+                      </div>
+                </div>
+            </div>
+            <div class="rest">
+                <div class="text">
+                    <p><span class="dark">Why Work</span> With Us?<p>
+                </div>
+                <div class="preformatted" id="service">
+                    <p><%= work %></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+  </body>
+</html>
+

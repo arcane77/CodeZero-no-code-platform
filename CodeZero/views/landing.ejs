@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://i.postimg.cc/ZYHGW3z0/logo192.png" rel="icon">
+    <link href="https://i.postimg.cc/ZYHGW3z0/logo192.png" rel="apple-touch-icon">
+    <title>CodeZero</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+body {
+    display: flex;
+    flex-direction: column;
+    top: 0; margin: 0;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.main-container {
+    padding-top: 20px;
+    width: 100%;
+    height: 100vh ;
+    /* position: fixed; */
+    background-image: url(images/bg.png);
+}
+
+.navbar {
+    display: flex;
+    /* position: sticky;
+    z-index: 11; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px 0 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
+    background: none;
+}
+
+.logo img {
+    height: 25px; 
+    width: 180px;
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #9B87F8;
+    font-size: 18px;
+    padding: 7px;
+    margin-right: 2.3rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4566c8; 
+}
+
+
+
+.text-1{
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    background: -webkit-linear-gradient(43deg,#f1f2f4 0%, #f4f4f4 46%, #fefefe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    max-width: 47rem;
+    margin: 12rem auto 4rem auto;
+    animation: slide-in-top 1.5s both;
+
+}
+
+.text-2{
+    font-family: "Syne", sans-serif;
+    font-weight: 500;
+    font-size: 34px;
+    background: -webkit-linear-gradient(43deg,#f1f2f4 0%, #f4f4f4 46%, #fefefe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-right: 1rem;
+    animation: slide-in-bottom 2.5s both;
+    position: absolute;
+    top: 47%;
+    left: 19%;
+    animation-delay: 0.5s; 
+    /* max-width: 50rem;
+    margin-left: 27rem; */
+}
+
+.card-parent {
+  width: 100%;
+  background-color: #f5f5f5;
+  display: block;
+  position: absolute;
+  top: 100%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+}
+
+
+.card1 {
+  width: 100%;
+  height: 25rem;
+  /* border-radius: 30px; */
+  margin-bottom: 3rem;
+  background: #fff;
+  box-shadow: 15px 15px 30px #bebebe,
+             -15px -15px 30px #ffffff;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: .3s;
+}
+
+
+/* button {
+    background-image: linear-gradient(to right, #EE5757, #FE904B);
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-left: 0.6rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} */
+
+.desc {
+  display: flex;
+}
+
+.card1:hover {
+  animation: slide-in-top 0.9s both;
+  color: #fff;
+}
+
+.containerOne:hover {
+  background: -webkit-linear-gradient(43deg, #9B87F8 0%, #788bf6e3 50%, #8BB4E5 100%);
+  transition-duration: .3s;
+  color: #fff;
+}
+    
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.content-odd{
+  font-family: "Syne", sans-serif;
+  font-weight: 500;
+  left: 4%;
+  position: absolute;
+    display: flex;  
+    color: #000;
+    font-size: 30px;
+    text-align: left;
+    width: 30rem;
+}
+
+.content-even{
+  font-family: "Syne", sans-serif;
+  font-weight: 500;
+   left: 46%;
+   position: absolute;
+    display: flex;  
+    color: #000;
+    font-size: 30px;
+    text-align: left;
+    width: 30rem;
+}
+
+.card1:hover .content-even {
+    color: #fff;
+}
+
+.card1:hover .content-odd {
+    color: #fff;
+}
+
+.card1:hover .brief-odd {
+    color: #fff;
+}
+
+.card1:hover .brief-even {
+    color: #fff;
+}
+
+
+.display-odd {
+  width: 520px;
+  height: 330px; 
+  border-radius: 10%;
+  margin-left: 50rem;
+}
+
+.display-even {
+  width: 520px;
+  height: 350px; 
+  border-radius: 10%;
+  margin-right: 50rem;
+}
+
+.brief-odd{
+  display: block;
+  position: absolute;
+  margin-top: 6rem;
+  left: 4.2%;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  text-align: left;
+  width: 46rem;
+}
+
+.brief-even{
+  display: block;
+  position: absolute;
+  margin-top: 6rem;
+  left: 46.2%;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  text-align: left;
+  width: 45rem;
+}
+
+.button {
+    background: transparent;            
+    color: white;                       
+    border: 2px solid white;         
+    padding: 15px 30px;                
+    font-size: 20px;                
+    border-radius: 18px;        
+    margin-left: 36.4rem;       
+    text-decoration: none;              
+    display: inline-block;              
+    cursor: pointer;                   
+    transition: background-color 0.3s, color 0.3s; 
+    animation: slide-in-left 2.2s both;
+    animation-delay: 1s; 
+    margin-top: 4rem;
+}
+
+.button:hover {
+    background-color: white;            
+     color: #9B87F8;          
+}
+
+
+</style>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        <img src="/images/logoc.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+        <a href="#blog">Blog Post</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#landing">Landing Pages</a>
+        <a href="#brochure">Brochure</a>
+        <a href="#cert">Certificates</a>
+    </div>
+</nav>
+
+    <div class="main-container">
+        <p class="text-1">Never start from scratch again </p>
+        <p class="text-2">Transform your plain text into static websites and blogs!</p>
+        <a href="#templatesSection" class="button">Browse all templates</a>
+
+    </div>
+    
+    <div class="card-parent" id="templatesSection">
+
+        <a href="blogpost" id="blog" class="card1 containerOne" style="margin-top: 1rem;"><div class="desc"><p class="content-odd">Personal Blog Posts</p> 
+          <p class="brief-odd">Create engaging blog posts with just a few clicks! Our Blog Post template features an editable title and content area where you can directly type in your text. The top image section remains fixed as you scroll, adding a dynamic layer to your posts. Customize the title text color with a simple color picker. Once you're satisfied, download your creation with the "Save Post" button, instantly saving your work as an HTML file that's ready to use or share online.</p>
+           <img class="display-odd" src="images/horizon.png" alt="horizon" loading="lazy"> </div></a>
+
+        <a href="portfolio" id="portfolio" class="card1 containerOne"><div class="desc"><p class="content-even">Portfolio Pages</p>
+          <p class="brief-even">Showcase your profile or artworks effortlessly on our Portfolio Pages. Choose from two distinct templates, each designed to make your work stand out with options for image galleries or sliders. Editing is straightforward: fill in descriptions, select your image according to the template of your choice. When ready, export your portfolio as a web page to share with clients or on your social media. </p>
+          <img class="display-even" src="images/modern.png" alt="horizon" loading="lazy"></div> </a>
+
+        <a href="landingPages" id="landing" class="card1 containerOne"><div class="desc"><p class="content-odd">Landing Pages</p>
+          <p class="brief-odd">Design compelling landing pages that drive action. Select from three specialized templates, each optimized for a different goal such as lead generation, event registration, or resource downloads. Edit headlines, upload images, and modify the persuasive copy directly on the page. Downloading your finished page is as simple as clicking a button, making it ready to go live and start converting.</p>
+          <img class="display-odd" src="images/page1.png" alt="page1" loading="lazy"></div></a>
+
+        <a href="BrochureSites" id="brochure" class="card1 containerOne"><div class="desc"><p class="content-even">Brochure sites</p>
+        <p class="brief-even">Develop informative brochure site pages with minimal effort. Our four different templates are tailored for essential business needs. Edit text fields directly to add your information, upload images, and arrange contact forms to fit your style. Each template is designed for clarity and impact, ensuring that your visitors receive a coherent and professional experience.</p>
+        <img class="display-even" src="images/brochure1.jpeg" alt="page1" loading="lazy"></div></a>
+
+        <a href="Certificates" id="cert" class="card1 containerOne"><div class="desc"><p class="content-odd">Professional Certificates</p>
+        <p class="brief-odd">Generate Certificate pages with minimal effort. Templates are tailored for essential Institutional needs. Add your text directly to add your information. Each template is designed for clarity and impact, ensuring that your beneficiaries receive a coherent and professional Certificate.</p>
+        <img class="display-odd" src="images/cert2.png" alt="page1" loading="lazy"></div></a>
+
+    </div>
+    <!-- <p>sdghshdgh</p> -->
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const scrollLinks = document.querySelectorAll('.button');
+
+      for (let link of scrollLinks) {
+          link.addEventListener('click', function(e) {
+              e.preventDefault(); //prevent the default anchor behavior
+              const target = document.querySelector(this.getAttribute('href')); 
+
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+          });
+      }
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const scrollLinks = document.querySelectorAll('.nav-links a');
+
+    for (let link of scrollLinks) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); //prevent the default anchor behavior
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+});
+
+</script>
+</html>
+
+
+
+
+

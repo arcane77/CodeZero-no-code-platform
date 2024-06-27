@@ -1,0 +1,133 @@
+<% %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= tag %></title>
+    <meta name="description" content="<%- desc %>">
+    <meta name="keywords" content="<%- keywords %>">
+    
+    <style>
+       body {
+        font-family: 'Arial', sans-serif;
+        position: relative;
+        height: 100vh;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; 
+        margin: 0;
+        top: 0;
+    }
+
+.upload-image{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    /* background-image: url('/public/images/design.png'); */
+    background-size: cover;  
+    background-position: center;
+}
+
+.main-text {
+    font-size: 85px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    color: azure;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+
+.sub-text {
+    font-size: 24px;
+    color: azure;
+    letter-spacing: 0.4px;
+    text-align: center;
+    max-width: 40vw;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+   
+}
+
+.sub-text1 {
+    font-size: 18px;
+    color: azure;
+    letter-spacing: 0.4px;
+    text-align: center;
+    max-width: 60vw;
+    position: absolute;
+    top: 55%;
+    left: 24%;
+}
+
+.circle {
+    position: absolute;
+    width: 75px; 
+    height: 75px; 
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
+}
+
+.circle1 {
+    position: absolute;
+    width: 120px; 
+    height: 120px; 
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
+}
+
+.circle2 {
+    position: absolute;
+    width: 100px; 
+    height: 100px; 
+    background-color: white;
+    border-radius: 50%; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
+}
+
+#circle1 {
+    top: calc(40% - 25px - 180px); 
+    left: calc(30% - 25px); 
+}
+
+#circle2 {
+    top: calc(70% - 5px); 
+    left: calc(10% - 25px - 90px);
+}
+
+#circle3 {
+    top: calc(11% - 25px); 
+    left: calc(90% - 25px + 90px); 
+}
+
+    </style>
+</head>
+<body>
+    <div class="upload-image">
+        <% if (images && images.length > 0) { %>
+            <% images.forEach(image => { %>
+                <div class="image-container">
+                    <img id="upload-image" src="data:<%= image.mimetype %>;base64,<%= image.buffer.toString('base64') %>" alt="Uploaded Image"/>
+               </div>
+            <% }); %>
+        <% } else { %>
+            <img src="" style="display: none;"/>
+        <% } %>
+        <div class="circle" id="circle1"></div>
+        <div class="circle1" id="circle2"></div>
+        <div class="circle2" id="circle3"></div>
+        <h1 class="main-text"><%= blogname %></h1>
+        <p class="sub-text"><%= tag %></p>
+        <p class="sub-text1"><%- description %></p>
+    </div>
+</body>
+</html>

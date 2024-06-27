@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blogname %></title>
+    <meta name="description" content="<%- description %>">
+    <meta name="keywords" content="<%- keywords %>">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.container {
+    width: 100%;
+    /* height: 100vh; */
+    padding-bottom: 20px;
+    background-color: #fff;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+
+#upload-image{
+    height: 60vh;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center; 
+    align-items: center;    
+    /* background-image: url('/Untitled.png'); */
+    background-size: cover;  
+    background-position: center;
+    cursor: pointer;
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.editable {
+    border: none;
+    outline: none;
+    width: 70%;
+}
+
+.editable:hover {
+    background-color: #f9f9f9;
+    cursor: text;
+}
+
+.post-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    font-weight: 900;
+    z-index: 2; 
+    position: absolute;
+    /* text-shadow: 
+-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
+-1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black; */
+}
+
+.center{
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-content {
+    font-size: 24px;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap; 
+}
+
+#ImageContentInput , #VideoContentInput {
+ 
+ display: block;
+ margin: 20px auto;
+}
+
+.content-wrapper {
+    position: relative;
+}
+
+#floating-btn {
+position: absolute;
+right: -50px;
+background-color: #000;
+color: #fff;
+border: none;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+font-size: 24px;
+line-height: 40px;
+text-align: center;
+cursor: pointer;
+display: none; /* Initially hidden */
+z-index: 10; /* Ensure it's above other content */
+left: calc(100% - 50px); /* Position it 10px to the left of the right edge of the container */
+}
+
+.centered-image {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+#save-btn {
+    display: block;
+    width: 15%;
+    padding: 10px 15px;
+    background-image: -webkit-linear-gradient(43deg,#4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    color: #fff;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="upload-image">
+            <!--image logic-->
+            <% if (images && images.length > 0) { %>
+                <% images.forEach(image => { %>
+                    <div class="image-container">
+                        <img id="upload-image" src="data:<%= image.mimetype %>;base64,<%= image.buffer.toString('base64') %>" alt="Uploaded Image"/>
+                   </div>
+                <% }); %>
+            <% } else { %>
+                <img src="" style="display: none;"/>
+            <% } %>
+            <h1 class="post-title editable" id="title" contenteditable="true" onclick="stopPropagation(event)"><%= blogname %></h1>
+        </div>
+
+        <input type="color" id="colorPicker" style="display: none;">
+        <button id="colorChangeBtn" onclick="openColorPicker()">Change title text color</button>
+
+        <div>
+            <p class="post-content editable center" id="content" contenteditable="true"><%- content %></p>
+        </div>
+
+        <button id="save-btn" onclick="downloadPage()">Save Post</button>
+    </div>
+
+    <script>
+            function openColorPicker() {
+                document.getElementById('colorPicker').setAttribute('data-target', 'post-title');
+                document.getElementById('colorPicker').click();
+            }
+
+             document.getElementById('colorPicker').addEventListener('input', function(e) {
+             const target = e.target.getAttribute('data-target');
+            if (target === 'post-title') {
+                 document.querySelector('.post-title').style.color = e.target.value;
+             }
+        });
+
+
+        function stopPropagation(e) {
+            e.stopPropagation();
+        }
+
+        
+
+
+    function downloadPage() {
+    
+    document.getElementById('colorChangeBtn').style.display = 'none';
+    document.getElementById('save-btn').style.display = 'none';
+
+
+    //entire HTML of the current page
+    const entirePage = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+
+    //convert the HTML string to a Blob
+    const blob = new Blob([entirePage], { type: 'text/html' });
+
+    //create a URL for the Blob
+    const url = URL.createObjectURL(blob);
+
+    //temporary anchor element and trigger a download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'blog.html';
+    a.click();
+
+    // cleanup: revoke the Blob URL
+    URL.revokeObjectURL(url);
+}
+    </script>
+</body>
+
+</html>

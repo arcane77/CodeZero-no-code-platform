@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blogname %></title>
+    <meta name="description" content="<%- description %>">
+    <meta name="keywords" content="<%- keywords %>">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        /* header {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        } */
+
+        main {
+            flex: 1;
+            display: flex;
+            padding: 0;
+            height: 100%;
+        }
+
+        #upload-image{
+            
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center; 
+            align-items: center;    
+            background-size: cover;  
+            background-position: center;
+            cursor: pointer;
+}
+
+.editable {
+    border: none;
+    outline: none;
+    width: 95%;
+}
+
+.editable:hover {
+    background-color: #f9f9f9;
+    cursor: text;
+}
+
+.post-title {
+    text-align: left;
+    font-size: 36px;
+    font-weight: bolder;
+    font-weight: 900;
+    top:0;
+    background: white;
+    z-index: 10;
+    margin-left: 1rem;
+    /* text-shadow: 
+-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
+-1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black; */
+}
+
+.center{
+    margin-left: 1rem;
+    
+}
+
+.post-content {
+    margin-top: 1rem;
+    font-size: 24px;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap; 
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%; 
+    z-index: 1;
+}
+        .left-section, .right-section {
+            flex: 1;
+            padding: 0px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .left-section {
+    overflow-y: hidden;
+}
+
+    .right-section {
+        flex: 1;
+        top: 0;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+
+    .sticky {
+    position: sticky;
+    top: 0; 
+    z-index: 10;
+    background: white; 
+}
+
+.scrollable-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 50px); 
+}
+
+
+        footer {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #save-btn {
+            display: block;
+            width: 15%;
+            padding: 10px 15px;
+            background-image: -webkit-linear-gradient(43deg,#4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            color: #fff;
+            border: none;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+}
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="left-section">
+            <div id="upload-image">
+                <!-- image logic -->
+                <% if (images && images.length > 0) { %>
+                    <% images.forEach(image => { %>
+                        <div class="image-container">
+                            <img id="upload-image" src="data:<%= image.mimetype %>;base64,<%= image.buffer.toString('base64') %>" alt="Uploaded Image"/>
+                       </div>
+                    <% }); %>
+                <% } else { %>
+                    <img src="" style="display: none;"/>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="sticky">
+                <h1 class="post-title editable" id="title" contenteditable="true" onclick="stopPropagation(event)"><%= blogname %></h1>
+            </div>
+            <div class="scrollable-content">
+                <p class="post-content editable center" id="content" contenteditable="true"><%- content %></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button id="save-btn" onclick="downloadPage()">Save Post</button>
+    </footer>
+
+    <script>
+
+        function stopPropagation(e) {
+        e.stopPropagation();
+        }
+
+
+        function downloadPage() {
+        document.getElementById('save-btn').style.display = 'none';
+
+
+        const entirePage = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+
+        //convert the HTML string to a Blob
+        const blob = new Blob([entirePage], { type: 'text/html' });
+
+        //create a URL for the Blob
+        const url = URL.createObjectURL(blob);
+
+        //temporary anchor element and trigger a download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'blog.html';
+        a.click();
+
+        // cleanup: revoke the blob URL
+        URL.revokeObjectURL(url);
+        }
+    </script>
+  </body>
+</html>
+

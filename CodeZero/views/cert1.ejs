@@ -1,0 +1,154 @@
+<% %>
+<html>
+    <head>
+        <style type='text/css'>
+            body, html {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                color: black;
+                display: table;
+                font-family: Georgia, serif;
+                font-size: 24px;
+                text-align: center;
+            }
+
+            
+
+            .container {
+                border: 20px solid rgb(216, 177, 0);
+                width: 1510px;
+                height: 800px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .inst {
+                color: rgb(205, 31, 0);
+                font-size: 30px;
+            }
+
+            .marquee {
+                color: tan;
+                font-size: 58px;
+                margin: 20px;
+            }
+            .assignment {
+                margin: 30px;
+            }
+            .person {
+                border-bottom: 2px solid black;
+                font-size: 42px;
+                font-style: italic;
+                margin: 30px auto;
+                width: 400px;
+            }
+
+            .date {
+                border-bottom: 2px solid black;
+                font-size: 40px;
+                font-style: italic;
+                margin: 30px auto;
+                width: 400px;
+            }
+
+            .personl {
+                border-bottom: 2px solid black;
+                width: 400px;
+            }
+            .personimg {
+                width: 240px;
+                height: 60px;
+                margin-bottom: 4px;
+            }
+
+            .wid{
+                width: 1200px;
+            }
+            .reasonr {
+                margin: 30px;
+                text-align: center;
+                margin-left: 300px;
+            }
+            .reason {
+                margin: 30px;
+            
+            }
+
+            .left{
+                position: absolute;
+                display: block;
+                top: 75%;
+                left: 5%;
+            }
+
+            .right{
+                position: absolute;
+                display: block;
+                top: 75%;
+                left: 68%;
+            }
+            #upload-image{
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center; 
+            align-items: center;    
+            background-size: cover;  
+            background-position: center;
+            cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+    
+        <div class="container">
+            <div name="inst" class="inst">
+                <%= inst %>
+            </div>
+
+            <div class="marquee" name="marquee">
+                Certificate of Completion
+            </div>
+
+            <div name="assign" class="assignment">
+                This certificate is presented to
+            </div>
+
+            <div name="person" class="person">
+                <%= person %>
+            </div>
+
+            <div class="wid">
+            <div name="reason" class="reasonr">
+                <%= reason %>
+            </div>
+        </div>
+
+            <div class="left">
+    
+                <div class="personl">
+                    <img class="personimg" src="data:<%= images[0].mimetype %>;base64,<%= images[0].buffer.toString('base64') %>" alt="<%= images[0].originalname %>">
+                </div>
+    
+                <div class="reason">
+                    Signature
+                </div>
+            </div>
+
+            <div class="right">
+    
+                <div name="date" class="date">
+                    <%= date %>
+                </div>
+    
+                <div class="reason">
+                    Date of Issue
+                </div>
+            </div>
+
+        </div>
+ 
+    </body>
+</html>
+
